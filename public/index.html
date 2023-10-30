@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Week Calendar</title>
+  <link rel="stylesheet" href="https://unpkg.com/fullcalendar@5.10.0/main.css">
+  <script src="https://unpkg.com/fullcalendar@5.10.0/main.js"></script>
+</head>
+<body>
+  <div id="calendar"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        // Customize calendar options here
+        initialView: 'timeGridWeek',
+        events: '/events', // API endpoint for fetching events from the server
+      });
+      calendar.render();
+    });
+  </script>
+</body>
+</html>
