@@ -67,6 +67,9 @@
   height: 68.78px;
 }
 .log-in1 { /* login button*/
+  border: none;
+  background-color: transparent;
+  outline: none;
   position: relative;
   letter-spacing: 0.01em;
   font-weight: 600;
@@ -190,3 +193,5 @@
   font-size: 18px;
   padding: 8px;
 }
+
+

@@ -29,6 +29,10 @@ app.get("/login", (req,res) => {
     res.render("login");
 
 })
+app.get("/homepage", (req,res) => {
+  res.render("homepage");
+
+})
 
 //login validation
 app.post("/login", async (req, res) => {
@@ -43,7 +47,7 @@ app.post("/login", async (req, res) => {
         console.log(user);
   
         if (user.password === password) {
-          res.status(201).render('index');
+          res.status(201).render('homepage');
         } else {
           res.send('Incorrect username or password');
         }
