@@ -3,6 +3,8 @@ const app = express();
 const path =require("path");
 //const hbs = require('hbs');
 
+const mongoose = require('mongoose');
+const Event = require('./models/eventModel');
 
 require("./db/conn");
 
@@ -34,6 +36,15 @@ app.get("/homepage", (req,res) => {
 
 })
 
+app.get('/', (req, res) => {
+  res.sendFile('index.html', { root: __dirname });
+});
+
+app.get('/calendar', (req,res)=>{
+  res.render('calendar')
+})
+
+
 //login validation
 app.post("/login", async (req, res) => {
     try {
@@ -58,7 +69,28 @@ app.post("/login", async (req, res) => {
       res.status(500).send('An error occurred');
     }
   });
+  app.get('/events', async (req, res) => {
+    try {
+      const events = await Event.find({});
+      res.json(events);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+      res.status(500).send('An error occurred while fetching events.');
+    }
+  });
   
+  app.post('/events', async (req, res) => {
+    const eventData = req.body;
+  
+    try {
+      const newEvent = new Event(eventData);
+      const savedEvent = await newEvent.save();
+      res.json(savedEvent);
+    } catch (error) {
+      console.error('Error creating event:', error);
+      res.status(500).send('An error occurred while creating the event.');
+    }
+  });
 
 
 app.listen(3000);

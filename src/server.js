@@ -6,14 +6,18 @@ const mongoose = require('mongoose');
 const Event = require('./models/eventModel');
 const path = require('path');
 
-app.use(express.static('public'));
-app.use(express.json());
+
 
 // Import the MongoDB connection module
 require('./db/conn.js');
 /*const static_path = path.join(__dirname , "../public");
 app.use(express.static(static_path));
-app.set("view engine", "hbs");*/
+*/
+app.set("view engine", "hbs");
+
+app.get('/calendar', (req,res)=>{
+  res.render('calendar')
+})
 
 app.get('/', (req, res) => {
   res.sendFile('index.html', { root: __dirname });
