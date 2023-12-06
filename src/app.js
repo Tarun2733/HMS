@@ -43,7 +43,9 @@ app.get('/', (req, res) => {
 app.get('/calendar', (req,res)=>{
   res.render('calendar')
 })
-
+app.get('/outpass', (req, res) => {
+  res.render('outpass');
+});
 
 //login validation
 app.post("/login", async (req, res) => {
