@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost:27017/HMS', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    
+const atlasConnectionUri = 'mongodb+srv://tarun:passwd123@hms.jgrogpq.mongodb.net/HMS';
+
+mongoose.connect(atlasConnectionUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 }).then(() => {
-    console.log('connection successful');
-}).catch((e) => {
-    console.log("no connection", e);
+  console.log('Connected to MongoDB Atlas');
+}).catch((error) => {
+  console.error('Error connecting to MongoDB Atlas:', error);
 });
