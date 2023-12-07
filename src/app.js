@@ -36,9 +36,7 @@ app.get("/homepage", (req,res) => {
 
 })
 
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: __dirname });
-});
+
 
 app.get('/calendar', (req,res)=>{
   res.render('calendar')
